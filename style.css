@@ -1,180 +1,115 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
+    box-sizing: border-box;
+}
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.main {
+    width: 100vw;
     height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    background: linear-gradient(to right, #30e8bf, #ff8235);
+    display: flex;
+    flex-wrap: wrap;
 }
 
-main {
-    flex-grow: 1;
+.middle{
+    position: absolute;
     display: flex;
+    transform: translate(-50% -50%);
     justify-content: center;
     align-items: center;
-  }
-
-/* .slider {
-    width: 800px;
-    margin: 0 auto;
-    position: relative;
     overflow: hidden;
 }
 
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+.slider-wrapper{
+    width: 900px;
+    height: 600px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border: 5px solid rgb(10, 10, 9);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(53, 50, 50, 0.8);
+    overflow: hidden;
 }
 
-.slide {
-    flex: 0 0 100%;
-    position: relative;
-    text-align: center;
-} */
-
-/* .caption {
+.slider-nav{
     position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-} */
-
-/* .slide:hover .caption {
-    opacity: 1;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-.slider-nav {
+    bottom: 30px;
+    left: 40%;
     display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-} */
+    gap: 5px;
+}
 
-label {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
-    margin: 0 10px;
+.bar {
+    height: 8px;
+    width: 30px;
+    margin: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    background-color: #312d2d;
+    opacity: .5;
+    border-radius: 10px;
+    transition: all 0.4s ease;
 }
 
-input[type="radio"] {
-    display: flex;
-}
-
-input[type="radio"]:checked + .slides {
-    transform: translateX(-100%);
-}
-
-input[type="radio"]:checked + .slider-nav label {
-    background-color: #666;
-}
-
-label:hover {
-    background-color: #999;
+.bar:hover{
+    opacity: 1;
     transform: scale(1.2);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-label:active {
-    background-color: #444;
-}
+.slider{display: none;}
 
-
-.slides {
+.slides{
+    width: 500%;
+    height: 92%;
     display: flex;
-    overflow: hidden;
-    transition: transform 0.5s ease-in-out;
-    width: 200%; /* Добавьте ширину для слайдов */
 }
 
-.slide {
-    flex: 0 0 33.3333%; /* Установите ширину слайдов на одну треть экрана */
-    position: relative;
-    text-align: center;
-    transition: opacity 0.3s ease-in-out; /* Добавьте анимацию для подписей */
+input[name="slider"]{
+    position: absolute;
+    visibility: hidden;
 }
 
-.slide img {
+
+
+.slide{
+    width: 20%;
+    transition: all ease-in-out 0.6s;
+}
+
+.slide img{
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
-.caption {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+.caption{
+    z-index: 2;
+    font-family: 'Inter';
+    color: #231f1f;
+    font-size: 2rem;
+    margin-left: 2rem;
+    /* margin-top: 0rem; */
 }
 
-.slide:hover .caption {
-    opacity: 1;
+#slide1:checked ~ .s1{
+    margin-left: 0%;
 }
 
-.slider-nav {
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
+#slide2:checked ~ .s1{
+    margin-left: -20%;
 }
 
-.slider-nav label {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+#slide3:checked ~ .s1{
+    margin-left: -40%;
 }
 
-/* Добавьте следующее правило для корректного позиционирования контролов */
-.slider-nav label:last-child {
-    margin-right: 0;
+#slide4:checked ~ .s1{
+    margin-left: -60%;
 }
 
-input[type="radio"]:checked + .slides {
-    transform: translateX(calc(-100% / 5)); /* Используйте calc для вычисления смещения */
+#slide5:checked ~ .s1{
+    margin-left: -80%;
 }
 
-input[type="radio"]:checked + .slider-nav label {
-    background-color: #666;
-}
 
-/* Добавьте интерактивные состояния для контролов */
-.slider-nav label:hover {
-    background-color: #999;
-}
 
-.slider-nav label:active {
-    background-color: #444;
-}
